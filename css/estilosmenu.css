@@ -1,0 +1,52 @@
+header {
+    height: 6em;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Para asegurarte de que el header esté por encima de otros elementos */
+}
+
+
+
+#logo{
+    height: 3em;
+    width:3em;
+}
+#usuario svg{
+    height: 3em;
+    width:3em;
+    margin-left:1em;
+    color:purple;
+}
+
+
+.nav-link {
+    color: black; 
+}
+
+.nav-link:hover {
+    background-color:rgba(128, 0, 128, 0.645);
+    color:white !important;
+}
+
+.rrss{
+    color:black;
+    padding:0.5em;
+    margin:0.5em;
+} 
+
+
+.rrss svg{
+    color:black;
+    height: 1.5em;
+    width: 1.5em;
+
+} 
+
+.rrss svg:hover{
+    color:black;
+    transform: scale(1.5); 
+    transition: transform 0.3s ease; 
+    
+}
