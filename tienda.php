@@ -31,7 +31,7 @@ session_start();
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">HOME</a>
+                <a class="nav-link"  href="index.php">HOME</a>
                 </li>
 
                 <li class="nav-item">
@@ -48,7 +48,7 @@ session_start();
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link" href="tienda.php">TIENDA</a>
+                <a class="nav-link active" aria-current="page" href="tienda.php">TIENDA</a>
                 </li>          
             </ul> <!-- final del menú links-->
 

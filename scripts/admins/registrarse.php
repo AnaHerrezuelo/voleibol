@@ -8,20 +8,33 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/estilosmenu.css">
+    <link rel="stylesheet" href="../../css/estilosadmins.css">
+    <link rel="stylesheet" href="../../css/estilosmenu.css">
+    
+    
 
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
-
-    <title>CATEGORÍAS</title>
+    <style>
+        .formulario {
+            margin-top:5em;                
+        }
+        @media(max-width:991px){
+            .formulario {
+                margin-top: 40em;      
+            }    
+        }
+    </style>
+    <title>LOGIN</title>
+   
 </head>
-<body>
+<body style="background-color:black;">
 <header>   
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"> <img src="imgs/header/pelotavoley2.jpg" id="logo"> </a>
+            <a class="navbar-brand" href="../../index.php"> <img src="../../imgs/header/pelotavoley2.jpg" id="logo"> </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,24 +44,24 @@ session_start();
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                <a class="nav-link"  href="index.php">HOME</a>
+                <a class="nav-link"  href="../../index.php">HOME</a>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="categorias.php">CATEGORÍAS</a>
+                <a class="nav-link" href="../../categorias.php">CATEGORÍAS</a>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link" href="calendario.php">CALENDARIO</a>
+                <a class="nav-link" href="../../calendario.php">CALENDARIO</a>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link" href="apuntarse.php">APUNTARSE</a>
+                <a class="nav-link" href="../../apuntarse.php">APUNTARSE</a>
                 
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link" href="tienda.php">TIENDA</a>
+                <a class="nav-link" href="../../tienda.php">TIENDA</a>
                 </li>          
             </ul> <!-- final del menú links-->
 
@@ -76,7 +89,7 @@ session_start();
             
             <!-- usuario -->
             <!-- <a class="navbar-brand" href="scripts/login.php"> <img src="img/pelotavoley2.jpg" id="usuario"> </a> -->
-            <a href="scripts/admins/login.php" class="navbar-brand" id="usuario">
+            <a href="login.php" class="navbar-brand" id="usuario">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
                 <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
                 <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>
@@ -88,7 +101,61 @@ session_start();
     </nav> <!-- final del navegador -->
         
 </header>
+
+
+<div class="formulario">
+        <h1> Registra a un usuario nuevo</h1>
+        <form action="actions/registrarnuevousuario.php" method="POST" id="formulario">
+            <label for="nombre"> Nombre</label><br>
+            <input type="text" id="nombre" name="nombre" > <br>
+
+            <label for="apellidos"> Apellidos </label><br>
+            <input type="text" id="apellido1" placeholder="Pimer Apellido" name="apellido1" > 
+            <input type="text" id="apellido2" placeholder="Segundo Apellido" name="apellido2" > <br>
+
+            <label for="email"> Correo Electrónico </label><br>
+            <input type="text" id="email" name="email" > <br> <br>
+            
+            <label for="usuario"> Nombre de Usuario </label> <br><!-- no va poder ser cambiado más adelante-->
+            <input type="text" id="usuario" name="usuario" placeholder="único" required> <br>
+
+
+            <label for="contrasena"> Contraseña </label><br> 
+            <input type="password"  id="contrasena" name="contrasena" ><br>
+
+            <label for="contrasena2"> Repite la contraseña </label><br>
+            <input type="password" id="contrasena2" name="contrasena2" > <br>
+
+            <button type="submit"> Registrar </button> <!-- onclick="validarContraseñas()" -->
+
+            <p> <a href="login.php"> Logearse </a> </p>
+        </form>
+    </div>
     
+
+    <script>
+
+        //funciona
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            var inputs = document.querySelectorAll('#formulario input[required]');
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === '') {
+                    alert('Por favor, rellene todos los campos.');
+                    event.preventDefault();
+                    return;
+                }
+            }
+
+            var contrasena = document.getElementById('contrasena').value;
+            var contrasena2 = document.getElementById('contrasena2').value;
+
+            if (contrasena !== contrasena2) {
+                alert('Las contraseñas no coinciden. Por favor, inténtelo nuevamente.');
+                event.preventDefault();
+            }
+        });
+
+    </script>
 
 
 

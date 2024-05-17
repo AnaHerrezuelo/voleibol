@@ -1,0 +1,71 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    height: 100vh; /* Toma el 100% de la altura de la ventana */
+    box-sizing:border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+.formulario {
+    width: 40%; /* Ancho del div de formulario */
+    padding-left: 2em;
+    background-color: lightblue;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    list-style: none;                  
+}
+
+
+
+
+input {
+    width: 80%;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing:border-box;
+    align-items:center;
+}
+input:hover {
+    /*border-color: purple;  Cambia el color del borde cuando el cursor pasa sobre el campo */
+    border:solid purple 5px;
+}
+button {
+    width: 80%;
+    padding: 0.5em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+p a:hover {
+    text-decoration: underline;
+}
+
+@media(max-width:991px){
+    .formulario {
+        width: 100%; /* Ancho del div de formulario */
+        margin-top: 40em;
+        padding: 1.5em;
+        background-color: lightblue;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        list-style: none;
+    }
+
+    
+}
