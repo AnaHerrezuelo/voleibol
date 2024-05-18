@@ -1,15 +1,17 @@
+
 body {
     background-color: black;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Centra horizontalmente el contenido */
-    align-items: center; /* Centra verticalmente el contenido */
-    height: 100vh; /* Toma el 100% de la altura de la ventana */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
     box-sizing:border-box;
     text-decoration: none;
     list-style: none;
 }
+
 
 
 .formulario {

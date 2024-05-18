@@ -1,0 +1,13 @@
+.cuerpo{
+    height: 100vh;
+    width: 100%;     
+    /* margin-top:5em;    añadido después de dejar el header fijo */
+    background-color: black;
+}
+
+.info{
+    height: 100%;
+    width: 70%;
+    margin-left:15%;
+    background-color: purple;
+}

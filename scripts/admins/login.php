@@ -8,8 +8,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- <link rel="stylesheet" href="../../css/estiloscuerpo.css"> -->
     <link rel="stylesheet" href="../../css/estilosadmins.css">
     <link rel="stylesheet" href="../../css/estilosmenu.css">
+    
     
     
 
@@ -94,22 +96,24 @@ session_start();
 </header>
 
 
-    <div class="formulario">
-        <h1> Acceder como administrador</h1>
-        <form action="actions/verificar.php" method="POST">
 
-            <label for="usuario"> Nombre de usuario </label><br>
-            <input type="text" placeholder="usuario" id="usuario" name="usuario" required> <br> <br>
+        <div class="formulario">
+            <h1> Acceder como administrador</h1>
+            <form action="actions/verificar.php" method="POST">
 
-            <label for="contrasena"> Contraseña</label><br>
-            <input type="password" placeholder="contraseña" id="contrasena" name="contrasena" required ><br><br>
+                <label for="usuario"> Nombre de usuario </label><br>
+                <input type="text" placeholder="usuario" id="usuario" name="usuario" required> <br> <br>
 
-            <button type="submit"> entrar </button>
+                <label for="contrasena"> Contraseña</label><br>
+                <input type="password" placeholder="contraseña" id="contrasena" name="contrasena" required ><br><br>
 
-            <p> <a href="registrarse.php"> Registrar </a> a un usuario nuevo </p> 
-            <p> <a href="actions/cerrarsesion.php"> Cerrar Sesión </a></p>
-        </form>
-    </div>
+                <button type="submit"> entrar </button>
+
+                <p> <a href="registrarse.php"> Registrar </a> a un usuario nuevo </p> 
+                <p> <a href="actions/cerrarsesion.php"> Cerrar Sesión </a></p>
+            </form>
+        </div>
+
     
 
 

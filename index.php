@@ -8,7 +8,11 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="css/estiloindex.css">
+    <!--
     <link rel="stylesheet" href="css/estilosmenu.css">
+    <link rel="stylesheet" href="css/estiloscuerpo.css">
+-->
 
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -89,6 +93,172 @@ session_start();
         
 </header>
     
+
+
+
+<div class="cuerpo">
+    <div class="info">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="imgs/img-index/voleybanner4.jpg" class="d-block w-100" alt="banner1" id="banner">
+                        <div class="carousel-caption d-none d-md-block letra">
+                            <h5>ESCUELA DE VOLEIBOL</h5>
+                            <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="imgs/img-index/voleybanner5.jpg" class="d-block w-100" alt="..." id="banner">
+                        <div class="carousel-caption d-none d-md-block letra">
+                            <h5>Second slide label</h5>
+                            <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/img-index/voleybanner3.jpg" class="d-block w-100" alt="..." id="banner">
+                        <div class="carousel-caption d-none d-md-block letra">
+                            <h5>Third slide label</h5>
+                            <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                    </div>
+                </div>  
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+         </div> <br><!-- cierre del carrusel-->
+
+
+            
+
+        <div class="proxpartido">
+            <?php
+                include ("scripts/inc/fechas.php");
+                include_once "scripts/conexion.php";
+                $con = getConexion();
+        
+                $sql="SELECT * FROM partidos WHERE fecha='".$fechaEnCurso."' ORDER BY fecha;";
+                $hacersql = $con->query($sql);
+
+                $numeroDepartidos = $hacersql->num_rows;
+                    echo ("<h4> Partidos del día: ".$diaActual."/".$mesActual."/".$annioActual."</h4><hr>");
+
+                    if ($numeroDepartidos<=0){
+                    echo ("<table class='table'>");
+                    echo ("<tr style='text-align: center;'>");
+                        echo("<th> SIN PARTIDOS </th>");
+                    echo ("</tr>");
+                    echo("</table>");
+                    }if ($numeroDepartidos>0){
+                        echo ("<table class='table table-bordered table-striped'>");
+                        echo ("<tr><th> Partido </th><th> Equipo 1 </th><th> Equipo 2 </th><th> Categoría </th><th> Fecha </th></tr>");
+                        while ($partido=$hacersql->fetch_array()) {
+                            echo ("<tr><td>".$partido["nombre"]."</td>");
+                            echo ("<td>".$partido["equipo_1"]."</td>");
+                            echo ("<td>".$partido["equipo_2"]."</td>");
+                            //echo ("<td>".$partido["categoria"]."</td>");
+                            echo ("</td></tr>");
+                    }
+                    echo("</table>");
+                    }
+                ?>
+            </div> <!-- fin proxmimo partido -->
+
+
+
+            <br><br>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link tarj" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"> Resultados  </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link tarj" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"> Noticias </a>
+            </li>
+          </ul>
+
+          
+
+        <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade tarj" id="home" role="tabpanel" aria-labelledby="home-tab">
+            Contenido de la pestaña "Resultados"
+        </div>
+
+        <!-- pestaña noticias -->
+        <div class="tab-pane fade show active tarj" id="profile" role="tabpanel" aria-labelledby="profile-tab" > 
+            <h2> Noticias </h2>
+            <?php
+                if(isset($_SESSION['usuario'])){
+                    $usuario = $_SESSION['usuario'];
+                    //echo "hola $usuario ";
+                    echo "<a href='scripts/index/noticia.php' class='btn btn-warning'> Añadir Noticia</a>";
+                }
+            ?>
+            <div class="container text-center mt-4">
+            <div class="row align-items-center">
+            
+                <?php
+                    $consulta="SELECT * FROM noticias;";
+                    $hacerConsulta = $con->query($consulta);
+                    while($noticia=$hacerConsulta->fetch_array()){
+                ?>
+
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="card" style="width: 100%;">
+                        <img src="<?php  echo ($noticia["imagen"]); ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text"><strong>  Titulo <?php echo ($noticia["titulo"]); ?></strong> </p>
+                            <p class="card-text"><?php echo ($noticia["descripcion"]); ?> </p>
+                            <p class="card-text">
+
+                            <?php
+                                if(isset($_SESSION['usuario'])){
+                                    $usuario = $_SESSION['usuario'];
+                                    echo("<form method='get' action='scripts/index/noticiaborrar.php'>");
+                                    echo ("<input type='hidden' name='id_noticia' value='".$noticia['id_noticia']."'>
+                                    <button type='submit' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span> Eliminar</button>");
+                                    echo ("</form>");
+                                }
+                            ?>
+                                
+                                
+                            </p>
+                        </div>
+                        </div><!-- final de card -->
+                        </div> <!-- final de la columna X-->
+                                        
+                <?php      
+                        }
+                ?>
+            </div> <!-- final de row-->
+            </div><!-- final de container-->
+        </div><!-- final de tab-panel-->
+        
+
+
+<br><br>
+
+<?php
+/*' or '1' = '1
+if(isset($_SESSION['usuario'])){
+    $usuario = $_SESSION['usuario'];
+    echo "hola $usuario ";
+}
+*/
+
+?>
+<a href="scripts/admins/actions/cerrarsesion.php"> cerrar sesión </a>
+
+    </div><!-- final de info -->
+</div> <!-- final de cuerpo -->
 
 
 

@@ -1,0 +1,106 @@
+
+        /*
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing:border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+        header{
+            background-color:red;
+            height: 6em;
+            width:100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+*/
+header {
+
+    height: 3em;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Para asegurarte de que el header esté por encima de otros elementos */
+}
+
+#logo{
+    height: 3em;
+    width:3em;
+}
+#usuario svg{
+    height: 3em;
+    width:3em;
+    margin-left:1em;
+    color:purple;
+}
+
+.nav-link:hover {
+    /* text-decoration: underline;  Subraya el texto */
+    background-color:purple;
+    color: white;
+}
+
+.rrss{
+    color:black;
+    padding:0.5em;
+    margin:0.5em;
+    /*
+    background-color:yellow;
+    border: 1px solid #ccc;
+    */
+} 
+
+
+.rrss svg{
+    color:black;
+    height: 1.5em;
+    width: 1.5em;
+
+} 
+
+.rrss svg:hover{
+    color:black;
+    transform: scale(1.5); 
+    transition: transform 0.3s ease; 
+    
+}
+
+
+.cuerpo{
+    /*
+    height: 100vh;
+    width: 100%;  
+    */    
+    margin-top:6em;    /*añadido después de dejar el header fijo */
+    background-color: black;
+}
+
+.info{
+    height: 100%;
+    width: 70%;
+    margin-left:15%;
+    background-color: purple;
+}
+
+.letra{
+    background-color: rgba(255, 255, 255, 0.784);
+    border-radius: 30px;
+}
+
+
+.proxpartido{
+    width: 100%;
+    height: auto;
+    background-color:white;
+    margin-top:2em;
+}
+.card{
+    margin:0.5em;
+}
+.tarj{
+    background-color:white;
+}
