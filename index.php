@@ -164,8 +164,8 @@ session_start();
                         echo ("<tr><th> Partido </th><th> Equipo 1 </th><th> Equipo 2 </th><th> Categoría </th><th> Fecha </th></tr>");
                         while ($partido=$hacersql->fetch_array()) {
                             echo ("<tr><td>".$partido["nombre"]."</td>");
-                                $equipo1 = $partido["equipo_1"];
-                                $equipo2 = $partido["equipo_2"];
+                                $equipo1 = $partido["equipo1"];
+                                $equipo2 = $partido["equipo2"];
                                 $sqlnombre1="SELECT * FROM equipos WHERE id_equipo='".$equipo1."'";
                                 $hacersqlnombre1 = $con->query($sqlnombre1);
                                 while ($nombre1=$hacersqlnombre1->fetch_array()) {
@@ -176,7 +176,12 @@ session_start();
                                 while ($nombre2=$hacersqlnombre2->fetch_array()) {
                                     echo ("<td>".$nombre2["nombre"]."</td>");
                                 }
-                            //echo ("<td>".$partido["categoria"]."</td>");
+                                $sqlcateg="SELECT * FROM categorias WHERE id_categoria='".$partido["categoria"]."'";
+                                $hacersqlcateg = $con->query($sqlcateg);
+                                while ($categ=$hacersqlcateg->fetch_array()) {
+                                    echo ("<td>".$categ["nombre"]."</td>");
+                                }
+                            echo ("<td>".$partido["fecha"]."</td>");
                             echo ("</td></tr>");
                     }
                     echo("</table>");

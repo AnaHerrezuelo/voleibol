@@ -4,7 +4,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Para asegurarte de que el header esté por encima de otros elementos */
+    z-index: 1000;
 }
 
 
