@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/estiloindex.css">
+    <link rel="stylesheet" href="css/estilosmenu.css">
     <!--
     <link rel="stylesheet" href="css/estilosmenu.css">
     <link rel="stylesheet" href="css/estiloscuerpo.css">
@@ -109,21 +110,21 @@ session_start();
                         <img src="imgs/img-index/voleybanner4.jpg" class="d-block w-100" alt="banner1" id="banner">
                         <div class="carousel-caption d-none d-md-block letra">
                             <h5>ESCUELA DE VOLEIBOL</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <p>Apuntate para pasar momentos divertidos </p>
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="imgs/img-index/voleybanner5.jpg" class="d-block w-100" alt="..." id="banner">
                         <div class="carousel-caption d-none d-md-block letra">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                            <h5>diviertete</h5>
+                            <p> Apuntate para pasar momentos divertidos  </p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="imgs/img-index/voleybanner3.jpg" class="d-block w-100" alt="..." id="banner">
+                        <img src="imgs/img-index/banner7.jpg" class="d-block w-100" alt="..." id="banner">
                         <div class="carousel-caption d-none d-md-block letra">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                            <h5>Aprende a jugar</h5>
+                            <p>Apuntate para pasar momentos divertidos </p>
                         </div>
                     </div>
                 </div>  
@@ -163,8 +164,18 @@ session_start();
                         echo ("<tr><th> Partido </th><th> Equipo 1 </th><th> Equipo 2 </th><th> Categoría </th><th> Fecha </th></tr>");
                         while ($partido=$hacersql->fetch_array()) {
                             echo ("<tr><td>".$partido["nombre"]."</td>");
-                            echo ("<td>".$partido["equipo_1"]."</td>");
-                            echo ("<td>".$partido["equipo_2"]."</td>");
+                                $equipo1 = $partido["equipo_1"];
+                                $equipo2 = $partido["equipo_2"];
+                                $sqlnombre1="SELECT * FROM equipos WHERE id_equipo='".$equipo1."'";
+                                $hacersqlnombre1 = $con->query($sqlnombre1);
+                                while ($nombre1=$hacersqlnombre1->fetch_array()) {
+                                    echo ("<td>".$nombre1["nombre"]."</td>");
+                                }
+                                $sqlnombre2="SELECT * FROM equipos WHERE id_equipo='".$equipo2."'";
+                                $hacersqlnombre2 = $con->query($sqlnombre2);
+                                while ($nombre2=$hacersqlnombre2->fetch_array()) {
+                                    echo ("<td>".$nombre2["nombre"]."</td>");
+                                }
                             //echo ("<td>".$partido["categoria"]."</td>");
                             echo ("</td></tr>");
                     }
@@ -177,21 +188,23 @@ session_start();
 
             <br><br>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <!--
             <li class="nav-item">
               <a class="nav-link tarj" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"> Resultados  </a>
             </li>
+                -->
             <li class="nav-item">
               <a class="nav-link tarj" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"> Noticias </a>
             </li>
           </ul>
 
           
-
+        <!--
         <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade tarj" id="home" role="tabpanel" aria-labelledby="home-tab">
             Contenido de la pestaña "Resultados"
         </div>
-
+        -->
         <!-- pestaña noticias -->
         <div class="tab-pane fade show active tarj" id="profile" role="tabpanel" aria-labelledby="profile-tab" > 
             <h2> Noticias </h2>

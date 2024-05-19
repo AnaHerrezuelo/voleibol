@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/estilosmenu.css">
+    <link rel="stylesheet" href="css/estiloscategorias.css">
 
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -88,7 +89,111 @@ session_start();
     </nav> <!-- final del navegador -->
         
 </header>
-    
+<div class="cuerpo">
+        <div class="info">
+        <!-- <img src="img/voleybanner2.jpeg" class="img-fluid" alt="..." id="img"> 
+        <div class="text-center" >
+            <img src="img/voleybanner2.jpeg" class="img-fluid custom-img" alt="...">
+        </div>
+        -->
+        <img src="imgs/categorias/banner8r.jpg" class="img-fluid" alt="..." style="width: 100%;">
+
+        
+
+        <div class="card exp">
+            <div class="card-body">
+                <h4> Categorías deportivas </h4><hr>
+                <p>
+                Las competiciones deportivas se dividen en diferentes categorías con objeto de estructurar mejor la formación del jugador buscando que el nivel sea similar y ayudando a desarrollar correctamente el aprendizaje de los diferentes medios técnico-tácticos.
+                </p>
+                <p>
+                Identificamos las categorías con las etapas establecidas por las federaciones deportivas atendiendo a la edad cronológica de los jugadores. De esta forma, desde que el jugador comienza a practicar una modalidad deportiva hasta que llega a la etapa adulta pasará por una serie de categorías en las que se irán adaptando las reglas y la competición.
+                </p>
+            </div>
+        </div>
+
+        <div class="accordion accordion-flush exp" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                     Benjamín (8-10 años)
+                </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <p> 
+                    EL CAMPO <br>
+                    1.1. Las dimensiones del campo son 6,00m ancho x 12,00m de largo, dividido en dos mitades iguales
+                    (6,00m x 6,00m), delimitado por líneas de colores que contrasten con la superficie de juego.
+                    1.2. La línea central separa ambos campos, no siendo necesaria ninguna otra delimitación.
+                    1.3. La superficie del terreno será plana y sin desniveles que puedan resultar peligrosos para los
+                    participantes.
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            
+
+
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Alevín (10-12 años)
+                </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Infantil (12-14 años)
+                </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Cadete (14-16 años)
+                </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                    Juvenil (16-18 años)
+                </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                    Senior (18-20 años)
+                </button>
+                </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                </div>
+            </div>
+        </div><!-- final acordeón masculino --><br>
+
+        
+
+
+        </div> <!-- final de info -->
+    </div><!-- final de cuerpo -->
 
 
 

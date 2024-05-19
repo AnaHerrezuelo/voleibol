@@ -1,0 +1,40 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+    text-decoration: none;
+    list-style: none;
+}
+.cuerpo{
+    height: auto;
+   
+    margin-top:6em;    /*añadido después de dejar el header fijo */
+    background-color: black;
+}
+
+.info{
+    height: 100%;
+    width: 70%;
+    margin-left:15%;
+    background-color: purple;
+}
+.exp{
+    margin-bottom:2em;
+}
+/*
+.custom-img {
+    height: 20%;
+    width: auto;
+    max-width: 100%;
+}
+*/
+.contenedor-imagen {
+    text-align: center; /* Centra horizontalmente */
+    background-color:yellow;
+    height: 20em;
+}
+.contenedor-imagen img {
+    max-width: 100%; /* La imagen no superará el ancho del contenedor */
+    max-height: 100vh; /* La imagen no superará la altura de la ventana */
+    height: auto; /* La altura se ajusta automáticamente para mantener la proporción */
+}

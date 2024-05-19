@@ -27,7 +27,9 @@ header {
 
 .nav-link:hover {
     background-color:rgba(128, 0, 128, 0.645);
+    border-color: purple;
     color:white !important;
+    font-weight: bold;
 }
 
 .rrss{
