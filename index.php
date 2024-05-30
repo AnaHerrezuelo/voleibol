@@ -1,5 +1,7 @@
 <?php
+//
 session_start();
+//require 'scripts/admins/actions/validar.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,9 +18,36 @@ session_start();
 -->
 
     <!-- BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
+    <style>
+        .navbar {
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+        @media(max-width:991px){
+    .info{
+        height: 100%;
+        width: 100%;
+        margin-left:0;
+    }
+    .table{
+        overflow:scroll;
+    }
+
+}
+
+footer{
+    height: 10em;
+    width: 100%;
+    background-color:grey;
+
+}
+    </style>
 
     <title>HOME</title>
 </head>
@@ -28,11 +57,13 @@ session_start();
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php"> <img src="imgs/header/pelotavoley2.jpg" id="logo"> </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
@@ -154,7 +185,7 @@ session_start();
                     echo ("<h4> Partidos del día: ".$diaActual."/".$mesActual."/".$annioActual."</h4><hr>");
 
                     if ($numeroDepartidos<=0){
-                    echo ("<table class='table'>");
+                    echo ("<table class='table' id='table'>");
                     echo ("<tr style='text-align: center;'>");
                         echo("<th> SIN PARTIDOS </th>");
                     echo ("</tr>");
@@ -213,21 +244,23 @@ session_start();
         <!-- pestaña noticias -->
         <div class="tab-pane fade show active tarj" id="profile" role="tabpanel" aria-labelledby="profile-tab" > 
             <h2> Noticias </h2>
+            <div class="container text-center mt-4">
+            <div class="row align-items-center">
             <?php
                 if(isset($_SESSION['usuario'])){
-                    $usuario = $_SESSION['usuario'];
+                //if(function_exists('usuariologeado')){
+                    //$usuario = $_SESSION['usuario'];
                     //echo "hola $usuario ";
                     echo "<a href='scripts/index/noticia.php' class='btn btn-warning'> Añadir Noticia</a>";
                 }
             ?>
-            <div class="container text-center mt-4">
-            <div class="row align-items-center">
             
                 <?php
                     $consulta="SELECT * FROM noticias;";
                     $hacerConsulta = $con->query($consulta);
                     while($noticia=$hacerConsulta->fetch_array()){
                 ?>
+
 
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                         <div class="card" style="width: 100%;">
@@ -239,6 +272,7 @@ session_start();
 
                             <?php
                                 if(isset($_SESSION['usuario'])){
+                                //if(function_exists('usuariologeado')){
                                     $usuario = $_SESSION['usuario'];
                                     echo("<form method='get' action='scripts/index/noticiaborrar.php'>");
                                     echo ("<input type='hidden' name='id_noticia' value='".$noticia['id_noticia']."'>
@@ -273,7 +307,10 @@ if(isset($_SESSION['usuario'])){
 */
 
 ?>
-<a href="scripts/admins/actions/cerrarsesion.php"> cerrar sesión </a>
+<!-- <a href="scripts/admins/actions/cerrarsesion.php"> cerrar sesión </a> -->
+<footer>
+
+</footer>
 
     </div><!-- final de info -->
 </div> <!-- final de cuerpo -->

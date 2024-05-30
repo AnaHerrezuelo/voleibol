@@ -3,7 +3,8 @@ include ("../inc/fechas.php");
 include_once "../conexion.php";
 $con = getConexion();
 // Se monta y ejecuta la consulta de actualizaci�n.
-  $consulta="UPDATE partidos SET nombre='".$_POST["nombre"]."', equipo1='".$_POST["equipo1"]."', equipo2='".$_POST["equipo2"]."', fecha='".$_POST["fecha"]."'  WHERE id_partido=".$_POST["partidoseleccionado"].";";
+  $consulta="UPDATE partidos SET nombre='".$_POST["nombre"]."', equipo1='".$_POST["equipo1"]."', equipo2='".$_POST["equipo2"]."', fecha='".$_POST["fecha"]."'  
+            WHERE id_partido=".$_POST["partidoseleccionado"].";";
 
   $hacerConsulta = $con->query($consulta);
 ?>

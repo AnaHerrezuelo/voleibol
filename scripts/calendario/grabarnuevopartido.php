@@ -8,7 +8,7 @@
   </head>
   <body onLoad="javascript:volver();">
   <?php
-// Se incluye el miniscript de tratamiento de fechas
+
 include ("../inc/fechas.php");
 include_once "../conexion.php";
 $con = getConexion();

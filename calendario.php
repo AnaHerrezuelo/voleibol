@@ -15,8 +15,39 @@ session_start();
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+        <!-- Import jquery cdn -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity= "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"> 
+    </script> 
+      
+    <script src= "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity= "sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"> 
+    </script> 
 
+
+    <style>
+    @media(max-width:991px){
+    .info{
+        height: 100%;
+        width: 100%;
+        margin-left:0;
+
+    }
+    .table{
+        overflow:scroll;
+    }
+
+    }
+
+    footer{
+        height: 10em;
+        width: 100%;
+        background-color:grey;
+
+    }
+    </style>
     <title>CALENDARIO</title>
 </head>
 <body>
@@ -102,9 +133,15 @@ session_start();
     
                 $sql="SELECT * FROM partidos WHERE fecha='".$fechaEnCurso."' ORDER BY fecha;";
                 $hacersql = $con->query($sql);
-
                 $numeroDepartidos = $hacersql->num_rows;
                     //echo ("<h4> Partidos del día: ".$diaActual."/".$mesActual."/".$annioActual."</h4>");
+
+            ?>
+            <form action="#.php" method="post" name="retorno" id="retorno">
+            <input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>">                                                                                                                
+            </form>
+            <?php
+            
                     echo ("<h4> Partidos de hoy:</h4> <hr>");
 
                     if ($numeroDepartidos<=0){
@@ -144,10 +181,11 @@ session_start();
             ?> <!-- fin de php -->
         </div><!-- final partido de hoy --> <br>
 
-        <div> <!-- BOTÓN PARA CAMBIAR DE MES -->
-            <form action="" method="post" name="formularioCitasPrincipal" id="formularioCitasPrincipal"> <!-- formularioCitasPrincipalfinal -->
-            <input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>">
 
+
+
+
+        <div> <!-- BOTÓN PARA CAMBIAR DE MES -->
             <?php
             if(isset($_SESSION['usuario'])){
             $usuario = $_SESSION['usuario'];
@@ -156,68 +194,77 @@ session_start();
             ?>
         </div>
 
-        <div id="calendar"></div> <!-- muestra función de calendario -->
-<?php
-    if(isset($_SESSION['usuario'])){
-    $usuario = $_SESSION['usuario'];
-?>       
-        <div class="listapartidos">  <!-- lista partidos admin -->
+
+        <form action="" method="post" name="formularioCitasPrincipal" id="formularioCitasPrincipal"> <!-- formularioCitasPrincipal -->
+            <input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>">
+
+        
+            <div id="calendar"></div> <!-- muestra función de calendario -->
+
 
 
             <?php
-                $consulta="SELECT * FROM partidos WHERE fecha='".$fechaEnCurso."' ORDER BY fecha;";
-                $hacerConsulta = $con->query($consulta);
+            if(isset($_SESSION['usuario'])){
+            $usuario = $_SESSION['usuario'];
+            ?>       
 
-                $numeropartidos = $hacerConsulta->num_rows;
-                    echo ("<br>");
-                    echo ("<h4> Partidos del día: ".$diaActual." del ".$mesActual." de ".$annioActual."</h4>");
-                    echo ("<table  class='table table-striped-columns' >");
-                    echo ("<td colspan='6'>");
-                        echo ("<input class='btn btn-warning' name='nuevopartido' type='button' id='nuevopartido' value='Agregar partido para hoy' onClick='javascript:saltar(\"scripts/calendario/agregarpartido.php\");'>  ");
-                        echo ("<input class='btn btn-warning' name='partidofuturo' type='button' id='partidofuturo' value='Agregar partido futuro' onClick='javascript:saltar(\"scripts/calendario/agregarpartidofuturo.php\");'>".salto);  
-                    echo ("</td>");
-                    if ($numeropartidos>0){
-                    
-                    echo ("<tr>");
-                        echo("<th> </th> <th> Partido </th><th> Equipo 1</th> <th> Equipo 2 </th> <th> Categoría </th> <th> Fecha </th>");
-                    echo ("</tr>");
-                    while ($partido=$hacerConsulta->fetch_array()) {
-                        echo ("<tr><td><input type='radio' id='partidoseleccionado' name='partidoseleccionado' value='".$partido["id_partido"]."'>");
-                        echo ("<td>".$partido["nombre"]."</td>");
-                            $equipo1 = $partido["equipo1"];
-                            $equipo2 = $partido["equipo2"];
-                            $sqlnombre1="SELECT * FROM equipos WHERE id_equipo='".$equipo1."'";
-                            $hacersqlnombre1 = $con->query($sqlnombre1);
-                            while ($nombre1=$hacersqlnombre1->fetch_array()) {
-                                echo ("<td>".$nombre1["nombre"]."</td>");
-                            }
-                            $sqlnombre2="SELECT * FROM equipos WHERE id_equipo='".$equipo2."'";
-                            $hacersqlnombre2 = $con->query($sqlnombre2);
-                            while ($nombre2=$hacersqlnombre2->fetch_array()) {
-                                echo ("<td>".$nombre2["nombre"]."</td>");
-                            }
-                            $sqlcateg="SELECT * FROM categorias WHERE id_categoria='".$partido["categoria"]."'";
-                            $hacersqlcateg = $con->query($sqlcateg);
-                            while ($categ=$hacersqlcateg->fetch_array()) {
-                                echo ("<td>".$categ["nombre"]."</td>");
-                            }
-                            
-                        echo ("<td>".$partido["fecha"]."</td>");
+
+            <div class="listapartidos">  <!-- lista partidos admin -->
+                <?php
+                    $consulta="SELECT * FROM partidos WHERE fecha='".$fechaEnCurso."' ORDER BY fecha;";
+                    $hacerConsulta = $con->query($consulta);
+
+                    $numeropartidos = $hacerConsulta->num_rows;
+                        echo ("<br>");
+                        echo ("<h4> Partidos del día: ".$diaActual." del ".$mesActual." de ".$annioActual."</h4>");
+                        echo ("<table  class='table table-striped-columns' >");
+                        echo ("<td colspan='6'>");
+                            echo ("<input class='btn btn-warning' name='nuevopartido' type='button' id='nuevopartido' value='Agregar partido para hoy' onClick='javascript:saltar(\"scripts/calendario/agregarpartido.php\");'>  ");
+                            echo ("<input class='btn btn-warning' name='partidofuturo' type='button' id='partidofuturo' value='Agregar partido futuro' onClick='javascript:saltar(\"scripts/calendario/agregarpartidofuturo.php\");'>".salto);  
+                        echo ("</td>");
+                        if ($numeropartidos>0){
+                        
+                        echo ("<tr>");
+                            echo("<th> </th> <th> Partido </th><th> Equipo 1</th> <th> Equipo 2 </th> <th> Categoría </th> <th> Fecha </th>");
                         echo ("</tr>");
-                    }
-                    echo ("<tr>");
-                    echo ("<td colspan='6'>");
-                    echo ("<input class='btn btn-warning' name='borrarCita'  type='button' id='borrarCita' value='Eliminar partido' onClick='javascript:saltar(\"scripts/calendario/eliminarpartido.php\");'>  ");
-                    echo ("<input class='btn btn-warning' name='cambiarCita' type='button' id='cambiarCita' value='Modificar partido' onClick='javascript:saltar(\"scripts/calendario/modificarpartido.php\");'>".salto);
-                    echo("</td>");
-                    echo ("</tr>");
-                    echo ("</table>");
-                    }
+                        while ($partido=$hacerConsulta->fetch_array()) {
+                            echo ("<tr><td><input type='radio' id='partidoseleccionado' name='partidoseleccionado' value='".$partido["id_partido"]."'>");
+                            echo ("<td>".$partido["nombre"]."</td>");
+                                $equipo1 = $partido["equipo1"];
+                                $equipo2 = $partido["equipo2"];
+                                $sqlnombre1="SELECT * FROM equipos WHERE id_equipo='".$equipo1."'";
+                                $hacersqlnombre1 = $con->query($sqlnombre1);
+                                while ($nombre1=$hacersqlnombre1->fetch_array()) {
+                                    echo ("<td>".$nombre1["nombre"]."</td>");
+                                }
+                                $sqlnombre2="SELECT * FROM equipos WHERE id_equipo='".$equipo2."'";
+                                $hacersqlnombre2 = $con->query($sqlnombre2);
+                                while ($nombre2=$hacersqlnombre2->fetch_array()) {
+                                    echo ("<td>".$nombre2["nombre"]."</td>");
+                                }
+                                $sqlcateg="SELECT * FROM categorias WHERE id_categoria='".$partido["categoria"]."'";
+                                $hacersqlcateg = $con->query($sqlcateg);
+                                while ($categ=$hacersqlcateg->fetch_array()) {
+                                    echo ("<td>".$categ["nombre"]."</td>");
+                                }
+                                
+                            echo ("<td>".$partido["fecha"]."</td>");
+                            echo ("</tr>");
+                        }
+                        echo ("<tr>");
+                        echo ("<td colspan='6'>");
+                        echo ("<input class='btn btn-warning' name='borrarCita'  type='button' id='borrarCita' value='Eliminar partido' onClick='javascript:saltar(\"scripts/calendario/eliminarpartido.php\");'>  ");
+                        echo ("<input class='btn btn-warning' name='cambiarCita' type='button' id='cambiarCita' value='Modificar partido' onClick='javascript:saltar(\"scripts/calendario/modificarpartido.php\");'>".salto);
+                        echo("</td>");
+                        echo ("</tr>");
+                        echo ("</table>");
+                        }
+                ?>
+            </div> <!-- fin lista partidos -->
+            <?php
+            }
             ?>
-        </div> <!-- fin lista partidos -->
-<?php
-}
-?>
+        </form> <!-- formularioCitasPrincipalfinal -->
 <br><br>
 
 
@@ -266,22 +313,19 @@ session_start();
             ?>
 
         </div><!-- fin lista todos partidos -->
-        </form> <!-- formularioCitasPrincipalfinal -->
 
         <br><br>
-        <form action="#.php" method="post" name="retorno" id="retorno">
-            <input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>"> <!-- si añado algo al value se me quitan los días del mes
-                                                                                                                pero si lo elimino del todo no, aunque el calendario deja de funcionr-->
-        </form>
 
+<footer>
 
+</footer>
 
 
     </div><!-- final de info -->
 </div> <!-- final de cuerpo -->
 
 
-<script src="js/calendario.js"> </script>
+<script src="js/calendario.js"> createCalendar() </script>
 
       <!-- Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -9,11 +9,31 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/estilosmenu.css">
+    
+    <link rel="stylesheet" href="css/estiloapuntarse.css">
+
 
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+    <style>
+        @media(max-width:991px){
+        .info{
+            height: 100%;
+            width: 100%;
+            margin-left:0;
+
+        }
+
+    }
+
+    footer{
+        height: 10em;
+        width: 100%;
+        background-color:grey;
+
+    }
+    </style>
 
     <title>APUNTARSE</title>
 </head>
@@ -88,7 +108,40 @@ session_start();
     </nav> <!-- final del navegador -->
         
 </header>
+<div class="cuerpo">
+<div class="info">
+<div class="formulario">
+        <h1> Envía tu formulario de registro </h1>
+        <!--  <form action="https://formsubmit.co/analiangxin@gmail.com" method="POST">  -->
+            <form action="apuntarse2.php" method="POST" id="formulario">
+                <label for="nombre"> Nombre</label><br>
+                <input type="text" id="nombre" name="nombre" > <br>
+
+                <label for="apellidos"> Apellidos </label><br>
+                <input type="text" id="apellido1" placeholder="Pimer Apellido" name="apellido1" > 
+                <input type="text" id="apellido2" placeholder="Segundo Apellido" name="apellido2" > <br>
+
+                <label for="fecha"> Fecha de Nacimiento </label><br>
+                <input type="date" id="fecha" name="fecha" > <br>
+
+                <label for="categoria"> Categoría</label><br>
+                <input type="text" id="categoria" name="categoria" > <br> 
     
+
+                <label for="domicilio"> Domicilio </label><br>
+                <input type="text" id="domicilio" name="domicilio" > <br>
+
+                <label for="mvl"> Teléfono móvil </label><br>
+                <input type="text" id="mvl" name="mvl" > <br>
+
+                <label for="tutor"> Nombre de un Tutor Legal </label><br>
+                <input type="text" id="tutor" name="tutor" > <br>
+                <button type="submit"> Enviar </button> <!-- onclick="validarContraseñas()" -->
+
+            </form>
+        </div>
+</div>
+</div>
 
 
 

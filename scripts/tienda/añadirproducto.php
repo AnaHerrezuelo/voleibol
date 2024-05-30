@@ -7,17 +7,19 @@
     <script language="javascript" type="text/javascript">
       function mandar (resultado){
         if (resultado){
-          document.formularionuevopartido.action="grabarnuevopartido.php";
+          document.formularionuevopartido.action="grabarnuevoproducto.php";
         } else {
-           document.formularionuevopartido.action="../../calendario.php";
+           document.formularionuevopartido.action="../../tienda.php";
         }
           document.formularionuevopartido.submit();
         }
     </script>
+
+<link rel="stylesheet" href="../../css/estilosmenu.css">
   
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../css/estilosmenu.css">
+
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -51,54 +53,28 @@
     ?>
   <div class="container">
     <h2 class="mt-5">Formulario de Contacto</h2>
-    <h2 class="mt-5">Agregar partido</h2>
-    <form action="" method="post" name="formularionuevopartido" id="formularionuevopartido">
+    <h2 class="mt-5">Agregar producto</h2>
+    <form action="grabarnuevoproducto.php" method="post" name="formularionuevopartido" id="formularionuevopartido" enctype="multipart/form-data">
       <input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>">
+      
       <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del partido">
+            <label for="formFile" class="form-label">Insertar imagen</label>
+            <input class="form-control" type="file" id="formFile" name="imagen" required>
       </div>
 
       <div class="form-group">
-        <label for="equipo1">Equipo 1:</label>
-        <select name="equipo1" id="equipo1" class="form-control">
-        <?php
-          $sqlnombre1="SELECT * FROM equipos";
-          $hacersqlnombre1 = $con->query($sqlnombre1);
-          while ($nombre1=$hacersqlnombre1->fetch_array()) {
-              echo ("<option value=".$nombre1["id_equipo"].">".$nombre1["nombre"]."</option>");
-          }
-        ?>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="equipo1">Equipo 2:</label>
-        <select name="equipo2" id="equipo2" class="form-control">
-        <?php
-          $sqlnombre2="SELECT * FROM equipos";
-          $hacersqlnombre2 = $con->query($sqlnombre2);
-          while ($nombre2=$hacersqlnombre2->fetch_array()) {
-              echo ("<option value=".$nombre2["id_equipo"].">".$nombre2["nombre"]."</option>");
-          }
-        ?>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="categoria">Categoría:</label>
-        <select name="categoria" id="categoria" class="form-control">
-        <?php
-          $sqlcategoria="SELECT * FROM categorias";
-          $hacersqlcategoria = $con->query($sqlcategoria);
-          while ($categoria=$hacersqlcategoria->fetch_array()) {
-              echo ("<option value=".$categoria["id_categoria"].">".$categoria["nombre"]."</option>");
-          }
-        ?>
-        </select>
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" required>
       </div>
 
-      <input class="btn btn-info" name="grabarpartido" type="button" id="grabarpartido" value="Añadir partido" onClick="javascript:mandar(true);">
+      <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Precio</label>
+            <input type="text" class="form-control" name="precio" required>
+      </div>
+
+       <button type="submit" class="btn btn-info"> Subir producto</button> 
+      <!-- <input class="btn btn-info" name="añadirproducto" type="button" id="añadirproducto" value="Añadir Producto" onClick="javascript:mandar(true);"> -->
       <input class="btn btn-info" name="cancelar" type="button" id="cancelar" value="Cancelar" onClick="javascript:mandar(false);">
-      </table>
     </form>
   </div>
 

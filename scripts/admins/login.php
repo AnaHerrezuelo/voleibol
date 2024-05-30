@@ -105,16 +105,19 @@ session_start();
                 <input type="text" placeholder="usuario" id="usuario" name="usuario" required> <br> <br>
 
                 <label for="contrasena"> Contraseña</label><br>
-                <input type="password" placeholder="contraseña" id="contrasena" name="contrasena" required ><br><br>
+                <input type="text" placeholder="contraseña" id="contrasena" name="contrasena" required ><br><br>
 
                 <button type="submit"> entrar </button>
-
-                <p> <a href="registrarse.php"> Registrar </a> a un usuario nuevo </p> 
-                <p> <a href="actions/cerrarsesion.php"> Cerrar Sesión </a></p>
             </form>
+            <?php
+                if(isset($_SESSION['usuario'])){
+                ?>
+                <p> <a href="registrarse.php"> Registrar </a> a un usuario nuevo </p> 
+                <p> <a class="btn btn-secondary" href="actions/cerrarsesion.php"> Cerrar Sesión </a></p>
+                <?php
+                }
+                ?>
         </div>
-
-    
 
 
 

@@ -118,7 +118,7 @@ $con = getConexion();
 
           <input class="btn btn-info" name="grabarCita" type="button" id="grabarCita" value="Grabar cambios" onClick="javascript:mandar(true);">
           <input class="btn btn-info" name="cancelar" type="button" id="cancelar" value="Descartar los cambios" onClick="javascript:mandar(false);">
-        </tr>
+        
   </form>
   </div>
 

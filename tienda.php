@@ -7,15 +7,52 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/estilosmenu.css">
+        <!-- cndjs -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
 
     <!-- BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
+    
+    <link rel="stylesheet" href="css/estilotienda.css">
+    <link rel="stylesheet" href="css/estilosmenu.css">
 
-    <title>CATEGORÍAS</title>
+    <style>
+.cuerpo{
+    height: auto;
+    width: 100%;     
+    /* margin-top:5em;    añadido después de dejar el header fijo */
+    background-color: black;
+}
+
+.info{
+    height: 100%;
+    width: 80%;
+    margin-left:10%;
+    background-color: purple;
+}
+
+@media(max-width:991px){
+.info{
+height: 100%;
+width: 100%;
+margin-left:0;
+
+}
+
+}
+
+footer{
+height: 10em;
+width: 100%;
+background-color:grey;
+
+}
+    </style>
+
+    <title>TIENDA</title>
 </head>
 <body>
 <header>   
@@ -88,10 +125,103 @@ session_start();
     </nav> <!-- final del navegador -->
         
 </header>
+
+<div class="cuerpo">
+  <div class="info">    
+    
+    <img src="imgs/tienda/bannertienda3.jpg" class="img-fluid" alt="..." style="width: 100%;">
+
+    <div class="sec-carrito"> 
+        <div class="card mb-3 carrito"> <!-- card mb-3 style="max-width: 30%;" carrito-->
+            <h3> Carrito </h3>
+            <div class="carrito-items">
+            </div> <!-- termina carrito-items --> 
+
+            <div class="row g-0 carrito-total" style="border:1px solid black;">
+                    <div class="fila">
+                        <strong>Tu Total</strong>
+                        <span class="carrito-precio-total">
+                            00
+                        </span>
+                    </div>
+                    <button class="btn-pagar" disbled>Pagar </button>
+            </div>
+        </div> <!-- card mb-3 carrito fin -->    
+    </div><!-- sec-carrito fin -->
+    
+
+<h2 style="color:white;"> Productos</h2>
+<!-- <a href='scripts/index/noticia.php' class='btn btn-warning'> Añadir producto</a> -->
+<!-- items -->
+    <div class="container text-center mt-4"> <!-- estructura de las tarjetas-->
+        <div class="row align-items-center">
+        <?php
+            include ("scripts/inc/fechas.php");
+            include_once "scripts/conexion.php";
+            $con = getConexion();
+
+                if(isset($_SESSION['usuario'])){
+                //if(function_exists('usuariologeado')){
+                    //$usuario = $_SESSION['usuario'];
+                    //echo "hola $usuario ";
+                    echo ("<a href='scripts/tienda/añadirproducto.php' class='btn btn-warning'> Añadir Producto</a>");
+                }
+            ?>
+
+            
+                <?php
+                    $consulta="SELECT * FROM tienda;";
+                    $hacerConsulta = $con->query($consulta);
+                    while($producto=$hacerConsulta->fetch_array()){
+                        //echo ($producto["imagen"]);
+                        //echo ("<img src='imgs/tienda/productos/pelotavoley3.jpg'>");
+                ?>
+
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="card" style="width: 100%;">
+                        <div class="card-body">
+                            <img src="<?php  echo ($producto["imagen"]); ?>" class="card-img-top img-item"  style="border:1px solid black;">
+                                <span class="card-text titulo-item">
+                                <strong><?php  echo ($producto["nombre"]); ?></strong>
+                                </span> <br>
+                            <span class="precio-item"><?php  echo ($producto["precio"]); ?> € </span><br>
+                            <button class="boton-item btn btn-secondary"> agregar </button><br>
+                            <?php
+                                if(isset($_SESSION['usuario'])){
+                                //if(function_exists('usuariologeado')){
+                                    $usuario = $_SESSION['usuario'];
+                                    echo("<form method='get' action='scripts/tienda/eliminarproducto.php'>");
+                                    echo ("<input type='hidden' name='id_tienda' value='".$producto['id_tienda']."'>
+                                    <button type='submit' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span> Eliminar</button>");
+                                    echo ("</form>");
+                                }
+                            ?>
+                                
+                        </div>
+                        </div><!-- final de card -->
+                        </div> <!-- final de la columna X-->
+                                        
+                <?php      
+                        }
+                ?>
+            
+
+            
+            
+
+
+        </div> <!-- final de row-->
+    </div><!-- final de container-->
+
+    <!-- <button class="boton-contar"> Contar </button> -->
+    <footer>
+</footer>
+  </div><!-- final de info -->
+</div> <!-- final de clase cuerpo -->
     
 
 
-
+<script src="js/tienda.js"> </script>
 
       <!-- Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

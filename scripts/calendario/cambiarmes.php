@@ -36,7 +36,7 @@
   <header>   
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-              <a class="navbar-brand" href="index.php"> <img src="imgs/header/pelotavoley2.jpg" id="logo"> </a>
+              <a class="navbar-brand" href="index.php"> <img src="../../ imgs/header/pelotavoley2.jpg" id="logo"> </a>
           </div>
       </nav> <!-- final del navegador -->
           
@@ -44,6 +44,7 @@
 
   <div class="container">
   <h2 class="mt-5">Formulario de Contacto</h2>
+  <h2 class="mt-5">Cambiar de mes</h2>
   <form action="../../calendario.php" method="post" name="formularioDeCambioDeFecha" id="formularioDeCambioDeFechas">
       <input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>">
 

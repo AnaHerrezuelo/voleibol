@@ -107,32 +107,31 @@ session_start();
         <h1> Registra a un usuario nuevo</h1>
         <form action="actions/registrarnuevousuario.php" method="POST" id="formulario">
             <label for="nombre"> Nombre</label><br>
-            <input type="text" id="nombre" name="nombre" > <br>
+            <input type="text" id="nombre" name="nombre" required > <br>
 
             <label for="apellidos"> Apellidos </label><br>
-            <input type="text" id="apellido1" placeholder="Pimer Apellido" name="apellido1" > 
-            <input type="text" id="apellido2" placeholder="Segundo Apellido" name="apellido2" > <br>
+            <input type="text" id="apellido1" placeholder="Pimer Apellido" name="apellido1" required> 
+            <input type="text" id="apellido2" placeholder="Segundo Apellido" name="apellido2" required> <br>
 
             <label for="email"> Correo Electrónico </label><br>
-            <input type="text" id="email" name="email" > <br> <br>
+            <input type="text" id="email" name="email" required> <br> <br>
             
             <label for="usuario"> Nombre de Usuario </label> <br><!-- no va poder ser cambiado más adelante-->
             <input type="text" id="usuario" name="usuario" placeholder="único" required> <br>
 
 
             <label for="contrasena"> Contraseña </label><br> 
-            <input type="password"  id="contrasena" name="contrasena" ><br>
+            <input type="password"  id="contrasena" name="contrasena" required ><br>
 
             <label for="contrasena2"> Repite la contraseña </label><br>
-            <input type="password" id="contrasena2" name="contrasena2" > <br>
+            <input type="password" id="contrasena2" name="contrasena2" required> <br>
 
             <button type="submit"> Registrar </button> <!-- onclick="validarContraseñas()" -->
 
             <p> <a href="login.php"> Logearse </a> </p>
         </form>
     </div>
-    
-
+        
     <script>
 
         //funciona
@@ -153,9 +152,20 @@ session_start();
                 alert('Las contraseñas no coinciden. Por favor, inténtelo nuevamente.');
                 event.preventDefault();
             }
-        });
 
+
+            var nombre = document.getElementById("contrasena").value;
+            var regex = /^[a-zA-Z0-9\s]*$/; 
+
+            if (!regex.test(nombre)) {
+                alert("Por favor, introduce solo letras y espacios en el nombre.");
+                event.preventDefault();
+ 
+            }
+        });
+        //' or '1' = '1
     </script>
+    
 
 
 
